@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwiftLogic AI — Python, Data & AI Automation for Indian Businesses</title>
+<meta name="description" content="SwiftLogic AI delivers Python automation, data analytics, and AI workflows for D2C brands, EdTech, logistics, and startups across India. No IT team needed. Free 30-min audit.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg:       #ffffff;
+  --bg2:      #f6f8fc;
+  --bg3:      #eef1f8;
+  --card:     #ffffff;
+  --gold:     #e89b1e;
+  --gold2:    #f5b041;
+  --gold-bg:  rgba(232,155,30,0.09);
+  --gold-br:  rgba(232,155,30,0.28);
+  --teal:     #0d9b7a;
+  --teal-bg:  rgba(13,155,122,0.08);
+  --rose:     #e55a5a;
+  --text:     #1a1d2e;
+  --text2:    #5a647a;
+  --text3:    #8b93a7;
+  --border:   #e2e6f0;
+  --border2:  #cfd5e6;
+  --mono:     'IBM Plex Mono', monospace;
+  --sans:     'Inter', sans-serif;
+  --r:        8px;
+  --shadow:   0 4px 18px rgba(26,29,46,0.06);
+  --shadow-lg:0 12px 36px rgba(26,29,46,0.08);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 6%;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.logo {
+  font-family:var(--mono); font-size:.95rem; font-weight:600;
+  color:var(--text); text-decoration:none; letter-spacing:-.01em;
+}
+.logo em { color:var(--gold); font-style:normal; }
+.logo sup {
+  font-size:.55rem; color:var(--text3); vertical-align:super;
+  letter-spacing:.08em; margin-left:2px;
+}
+.nav-links { display:flex; gap:2.2rem; list-style:none; }
+.nav-links a {
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--text2); text-decoration:none;
+  transition:color .2s;
+}
+.nav-links a:hover { color:var(--gold); }
+.nav-cta {
+  font-family:var(--mono); font-size:.72rem; font-weight:600;
+  letter-spacing:.06em; background:var(--gold); color:#fff;
+  padding:9px 20px; border-radius:var(--r); text-decoration:none;
+  transition:background .2s;
+}
+.nav-cta:hover { background:var(--gold2); }
+
+/* HERO */
+.hero {
+  min-height:100vh; display:flex; flex-direction:column;
+  justify-content:center; align-items:flex-start;
+  padding:140px 6% 80px;
+  position:relative; overflow:hidden;
+  background:linear-gradient(180deg, #fafbff 0%, #ffffff 100%);
+}
+.hero::before {
+  content:'';
+  position:absolute; inset:-40px;
+  background-image:
+    linear-gradient(rgba(232,155,30,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,155,30,.04) 1px, transparent 1px);
+  background-size:60px 60px;
+  transform:rotate(-4deg) scale(1.15);
+}
+.hero::after {
+  content:'';
+  position:absolute; width:700px; height:500px;
+  background:radial-gradient(ellipse, rgba(232,155,30,.07) 0%, transparent 70%);
+  top:10%; right:-10%;
+  pointer-events:none;
+}
+.hero-inner { position:relative; z-index:1; max-width:780px; }
+
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--gold);
+  border:1px solid var(--gold-br); background:var(--gold-bg);
+  padding:5px 14px; border-radius:20px;
+  margin-bottom:2.2rem;
+}
+.hero-badge::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--gold); animation:pulse 2s ease infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; } 50% { opacity:.3; }
+}
+
+.hero h1 {
+  font-family:var(--mono); font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:600; line-height:1.12; letter-spacing:-.025em;
+  color:var(--text); margin-bottom:1.6rem;
+}
+.hero h1 .hl { color:var(--gold); }
+.hero h1 .dim { color:var(--text2); font-weight:400; }
+
+.hero-desc {
+  font-size:1.05rem; color:var(--text2); font-weight:400;
+  max-width:580px; margin-bottom:2.8rem; line-height:1.7;
+}
+
+.hero-actions { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:3.5rem; }
+
+.btn-gold {
+  background:var(--gold); color:#fff;
+  font-family:var(--mono); font-size:.78rem; font-weight:600;
+  letter-spacing:.05em; padding:14px 28px; border-radius:var(--r);
+  text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+  transition:background .2s, transform .15s;
+  box-shadow:0 4px 14px rgba(232,155,30,0.25);
+}
+.btn-gold:hover { background:var(--gold2); transform:translateY(-1px); }
+
+.btn-outline {
+  border:1px solid var(--border2); color:var(--text2); background:#fff;
+  font-family:var(--mono); font-size:.78rem; letter-spacing:.05em;
+  padding:14px 28px; border-radius:var(--r); text-decoration:none;
+  display:inline-flex; align-items:center; gap:8px;
+  transition:border-color .2s, color .2s;
+}
+.btn-outline:hover { border-color:var(--gold-br); color:var(--gold); }
+
+/* TICKER */
+.ticker-wrap {
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  overflow:hidden;
+  position:relative; z-index:1;
+  background:var(--bg2);
+  box-shadow:var(--shadow);
+}
+.ticker-head {
+  display:flex; align-items:center; gap:8px;
+  padding:10px 16px;
+  border-bottom:1px solid var(--border);
+  background:#fff;
+}
+.ticker-dot { width:8px; height:8px; border-radius:50%; }
+.td-r { background:#ff5f57; }
+.td-y { background:#ffbd2e; }
+.td-g { background:#28c840; animation:pulse 2s infinite; }
+.ticker-label {
+  font-family:var(--mono); font-size:.65rem; color:var(--text3);
+  letter-spacing:.08em; margin-left:4px;
+}
+.ticker-track {
+  display:flex; gap:0;
+  animation:ticker 28s linear infinite;
+  width:max-content;
+}
+@keyframes ticker {
+  0% { transform:translateX(0); }
+  100% { transform:translateX(-50%); }
+}
+.ticker-item {
+  display:flex; align-items:center; gap:10px;
+  padding:11px 28px; border-right:1px solid var(--border);
+  font-family:var(--mono); font-size:.72rem; white-space:nowrap;
+  background:#fff;
+}
+.ticker-city { color:var(--text3); }
+.ticker-event { color:var(--text2); }
+.ticker-val { color:var(--teal); font-weight:500; }
+
+/* SECTION BASE */
+section { padding:96px 6%; }
+.inner { max-width:1100px; margin:0 auto; }
+
+.eyebrow {
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--gold);
+  display:block; margin-bottom:1rem;
+}
+h2 {
+  font-family:var(--mono); font-size:clamp(1.7rem,3vw,2.3rem);
+  font-weight:600; color:var(--text); line-height:1.15;
+  margin-bottom:1rem; letter-spacing:-.02em;
+}
+.section-sub {
+  font-size:1rem; color:var(--text2); font-weight:400;
+  max-width:520px; margin-bottom:3.5rem; line-height:1.7;
+}
+
+/* SERVICES */
+#services { background:var(--bg2); }
+
+.svc-wrap {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.svc {
+  padding:2.2rem 2rem 2.5rem;
+  border-right:1px solid var(--border);
+  background:#fff;
+  position:relative; overflow:hidden;
+  transition:background .25s;
+}
+.svc:last-child { border-right:none; }
+.svc:hover { background:var(--bg2); }
+.svc::after {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .3s ease;
+}
+.svc:hover::after { transform:scaleX(1); }
+.svc.s1::after { background:var(--gold); }
+.svc.s2::after { background:var(--teal); }
+.svc.s3::after { background:var(--rose); }
+
+.svc-no {
+  font-family:var(--mono); font-size:.65rem; color:var(--text3);
+  letter-spacing:.1em; margin-bottom:1.8rem; display:block;
+}
+.svc-ico {
+  width:44px; height:44px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem; margin-bottom:1.4rem;
+}
+.svc-ico.g { background:var(--gold-bg); }
+.svc-ico.t { background:var(--teal-bg); }
+.svc-ico.r { background:rgba(229,90,90,.08); }
+
+.svc-title {
+  font-family:var(--mono); font-size:1rem; font-weight:600;
+  color:var(--text); margin-bottom:.75rem;
+}
+.svc-desc {
+  font-size:.88rem; color:var(--text2); line-height:1.7;
+  margin-bottom:1.5rem;
+}
+.tags { display:flex; flex-wrap:wrap; gap:6px; }
+.tag {
+  font-family:var(--mono); font-size:.63rem; letter-spacing:.05em;
+  padding:3px 9px; border-radius:4px; border:1px solid;
+}
+.tag.g { border-color:var(--gold-br); color:var(--gold); }
+.tag.t { border-color:rgba(13,155,122,.25); color:var(--teal); }
+.tag.r { border-color:rgba(229,90,90,.25); color:var(--rose); }
+
+/* INDUSTRIES */
+#industries { background:var(--bg); }
+
+.ind-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:14px;
+}
+.ind-card {
+  background:#fff; border:1px solid var(--border);
+  border-radius:var(--r); padding:1.6rem 1.5rem;
+  transition:border-color .2s, transform .2s, box-shadow .2s;
+  cursor:pointer; box-shadow:var(--shadow);
+}
+.ind-card:hover {
+  border-color:var(--gold-br); transform:translateY(-3px);
+  box-shadow:var(--shadow-lg);
+}
+.ind-ico { font-size:1.6rem; margin-bottom:1rem; display:block; }
+.ind-name {
+  font-family:var(--mono); font-size:.9rem; font-weight:600;
+  color:var(--text); margin-bottom:.4rem;
+}
+.ind-desc { font-size:.82rem; color:var(--text2); line-height:1.6; }
+.ind-price {
+  font-family:var(--mono); font-size:.75rem; color:var(--teal);
+  font-weight:500; margin-top:.8rem;
+}
+
+/* PROJECTS */
+#projects { background:var(--bg2); }
+
+.proj-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:16px;
+}
+.proj-card {
+  background:#fff; padding:1.8rem;
+  border:1px solid var(--border); border-radius:var(--r);
+  transition:transform .2s, box-shadow .2s;
+  box-shadow:var(--shadow);
+}
+.proj-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+.proj-biz {
+  font-family:var(--mono); font-size:.63rem; letter-spacing:.1em;
+  text-transform:uppercase; margin-bottom:.75rem; display:block;
+}
+.pb-d2c     { color:var(--gold); }
+.pb-edtech  { color:var(--teal); }
+.pb-logi    { color:#7c5cbf; }
+.pb-mfg     { color:#d97706; }
+.pb-any     { color:var(--text2); }
+.proj-name {
+  font-family:var(--mono); font-size:.92rem; font-weight:600;
+  color:var(--text); margin-bottom:.5rem;
+}
+.proj-desc { font-size:.83rem; color:var(--text2); line-height:1.6; margin-bottom:.9rem; }
+.proj-price { font-family:var(--mono); font-size:.75rem; color:var(--teal); font-weight:500; }
+
+/* LIVE DEMO */
+#demo { background:var(--bg); }
+.demo-card {
+  background:#fff; border:1px solid var(--border); border-radius:14px;
+  padding:2.5rem; box-shadow:var(--shadow-lg); display:grid;
+  grid-template-columns:1.4fr 1fr; gap:2.5rem; align-items:center;
+}
+.demo-badge {
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:var(--mono); font-size:.65rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--teal);
+  background:var(--teal-bg); border:1px solid rgba(13,155,122,.25);
+  padding:4px 12px; border-radius:20px; margin-bottom:1rem;
+}
+.demo-title {
+  font-family:var(--mono); font-size:1.35rem; font-weight:600;
+  color:var(--text); margin-bottom:.6rem; line-height:1.3;
+}
+.demo-desc {
+  font-size:.92rem; color:var(--text2); line-height:1.7; margin-bottom:1.4rem;
+}
+.demo-features {
+  list-style:none; margin-bottom:1.8rem;
+}
+.demo-features li {
+  font-size:.86rem; color:var(--text2); padding:5px 0;
+  display:flex; gap:8px; align-items:flex-start;
+}
+.demo-features li::before {
+  content:'→'; color:var(--teal); font-family:var(--mono); flex-shrink:0;
+}
+.demo-side {
+  background:var(--bg2); border:1px solid var(--border); border-radius:12px;
+  padding:1.8rem; text-align:center;
+}
+.demo-side .label {
+  font-family:var(--mono); font-size:.65rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--text3); margin-bottom:.8rem;
+}
+.demo-side .brand {
+  font-family:var(--mono); font-size:1.1rem; font-weight:600;
+  color:var(--text); margin-bottom:.3rem;
+}
+.demo-side .meta {
+  font-size:.8rem; color:var(--text2); margin-bottom:1.4rem;
+}
+.demo-kpis {
+  display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:1.4rem;
+}
+.demo-kpi {
+  background:#fff; border:1px solid var(--border); border-radius:8px;
+  padding:12px 10px;
+}
+.demo-kpi .num {
+  font-family:var(--mono); font-size:1.05rem; font-weight:600; color:var(--text);
+}
+.demo-kpi .lbl {
+  font-size:.68rem; color:var(--text3); margin-top:2px;
+}
+.demo-note {
+  font-size:.78rem; color:var(--text3); line-height:1.5;
+}
+@media (max-width:800px) {
+  .demo-card { grid-template-columns:1fr; }
+}
+
+/* PRICING */
+#pricing { background:var(--bg2); }
+
+.plans {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:16px;
+}
+.plan {
+  background:#fff; border:1px solid var(--border);
+  border-radius:var(--r); padding:2rem;
+  position:relative; box-shadow:var(--shadow);
+}
+.plan.featured {
+  border-color:var(--gold);
+  box-shadow:var(--shadow-lg);
+}
+.plan-badge {
+  position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+  font-family:var(--mono); font-size:.65rem; font-weight:600;
+  background:var(--gold); color:#fff;
+  padding:3px 14px; border-radius:20px; letter-spacing:.08em;
+  white-space:nowrap;
+}
+.plan-name {
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--text3); margin-bottom:.4rem;
+}
+.plan-price {
+  font-family:var(--mono); font-size:2.2rem; font-weight:600;
+  color:var(--text); line-height:1; margin-bottom:.25rem;
+}
+.plan-price span { font-size:.9rem; color:var(--text2); font-weight:400; }
+.plan-sub { font-size:.8rem; color:var(--text2); margin-bottom:1.6rem; }
+.plan-list { list-style:none; margin-bottom:2rem; }
+.plan-list li {
+  font-size:.84rem; color:var(--text2);
+  padding:6px 0; border-bottom:1px solid var(--border);
+  display:flex; gap:8px;
+}
+.plan-list li:last-child { border-bottom:none; }
+.plan-list li::before { content:'→'; color:var(--teal); font-family:var(--mono); flex-shrink:0; }
+.plan-btn {
+  display:block; text-align:center;
+  font-family:var(--mono); font-size:.76rem; font-weight:600;
+  letter-spacing:.05em; padding:12px; border-radius:var(--r);
+  text-decoration:none; transition:opacity .2s;
+}
+.plan-btn:hover { opacity:.85; }
+.plan-btn.gold { background:var(--gold); color:#fff; }
+.plan-btn.ghost { border:1px solid var(--border2); color:var(--text2); background:#fff; }
+
+/* PROCESS */
+#process { background:var(--bg2); }
+
+.process-grid {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--border); margin-top:1rem;
+  border-radius:var(--r); overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.proc-step {
+  padding:2rem 1.6rem;
+  border-right:1px solid var(--border);
+  background:#fff;
+  position:relative;
+}
+.proc-step:last-child { border-right:none; }
+.proc-wk {
+  font-family:var(--mono); font-size:.63rem; color:var(--gold);
+  letter-spacing:.1em; text-transform:uppercase;
+  margin-bottom:1rem; display:block;
+}
+.proc-title {
+  font-family:var(--mono); font-size:.9rem; font-weight:600;
+  color:var(--text); margin-bottom:.5rem;
+}
+.proc-desc { font-size:.82rem; color:var(--text2); line-height:1.65; }
+
+/* ACQUIRE */
+#acquire { background:var(--bg); }
+
+.acq-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; }
+.acq-card {
+  background:#fff; border:1px solid var(--border);
+  border-radius:var(--r); padding:1.5rem;
+  box-shadow:var(--shadow);
+}
+.acq-no {
+  font-family:var(--mono); font-size:1.8rem; font-weight:600;
+  color:var(--border2); line-height:1; margin-bottom:.8rem;
+}
+.acq-title { font-family:var(--mono); font-size:.9rem; font-weight:600; color:var(--text); margin-bottom:.4rem; }
+.acq-desc { font-size:.82rem; color:var(--text2); line-height:1.6; }
+
+/* TOOLS */
+#tools { background:var(--bg2); }
+
+.tools-strip { display:flex; flex-wrap:wrap; gap:8px; margin-top:2rem; }
+.tool {
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.04em;
+  padding:7px 13px; border-radius:6px;
+  border:1px solid var(--border); color:var(--text2);
+  background:#fff; transition:border-color .2s, color .2s;
+}
+.tool:hover { border-color:var(--gold-br); color:var(--gold); }
+.tool.hl { border-color:var(--gold-br); color:var(--gold); background:var(--gold-bg); }
+
+/* CONTACT */
+#contact { background:var(--bg); }
+
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+.contact-left h2 { margin-bottom:1rem; }
+.contact-left p { font-size:.95rem; color:var(--text2); margin-bottom:2rem; line-height:1.7; }
+
+.cinfo { list-style:none; }
+.cinfo li {
+  display:flex; gap:14px; align-items:flex-start;
+  padding:11px 0; border-bottom:1px solid var(--border);
+  font-size:.86rem;
+}
+.cinfo li:last-child { border-bottom:none; }
+.clabel {
+  font-family:var(--mono); font-size:.63rem; color:var(--text3);
+  text-transform:uppercase; letter-spacing:.09em;
+  min-width:80px; margin-top:2px; flex-shrink:0;
+}
+.cval { color:var(--text2); line-height:1.5; }
+.cval a { color:var(--gold); text-decoration:none; }
+.cval a:hover { text-decoration:underline; }
+
+.cform { display:flex; flex-direction:column; gap:13px; }
+.crow { display:grid; grid-template-columns:1fr 1fr; gap:13px; }
+input,textarea,select {
+  width:100%; background:#fff; border:1px solid var(--border);
+  color:var(--text); font-family:var(--sans); font-size:.88rem;
+  padding:12px 14px; border-radius:var(--r); outline:none;
+  transition:border-color .2s; resize:vertical;
+}
+input:focus,textarea:focus,select:focus { border-color:var(--gold-br); }
+input::placeholder,textarea::placeholder { color:var(--text3); }
+select option { background:#fff; }
+.csubmit {
+  background:var(--gold); color:#fff;
+  font-family:var(--mono); font-size:.78rem; font-weight:600;
+  letter-spacing:.05em; padding:14px; border:none;
+  border-radius:var(--r); cursor:pointer;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  transition:background .2s;
+}
+.csubmit:hover { background:var(--gold2); }
+
+/* FOOTER */
+footer {
+  background:var(--bg2);
+  border-top:1px solid var(--border);
+  padding:2rem 6%;
+  display:flex; justify-content:space-between;
+  align-items:center; flex-wrap:wrap; gap:1rem;
+}
+.footer-logo { font-family:var(--mono); font-size:.85rem; color:var(--gold); font-weight:600; }
+.footer-copy { font-family:var(--mono); font-size:.68rem; color:var(--text3); }
+.footer-links { display:flex; gap:1.6rem; list-style:none; }
+.footer-links a {
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.07em;
+  color:var(--text3); text-decoration:none; transition:color .2s;
+}
+.footer-links a:hover { color:var(--gold); }
+
+/* RESPONSIVE */
+@media (max-width:900px) {
+  .svc-wrap { grid-template-columns:1fr; }
+  .svc { border-right:none; border-bottom:1px solid var(--border); }
+  .svc:last-child { border-bottom:none; }
+  .process-grid { grid-template-columns:1fr 1fr; }
+  .proc-step:nth-child(2) { border-right:none; }
+  .proc-step:nth-child(3) { border-top:1px solid var(--border); }
+}
+@media (max-width:700px) {
+  nav { padding:14px 4%; }
+  .nav-links { display:none; }
+  section { padding:64px 5%; }
+  .hero { padding:110px 5% 64px; }
+  .contact-grid { grid-template-columns:1fr; gap:2.5rem; }
+  .crow { grid-template-columns:1fr; }
+  .process-grid { grid-template-columns:1fr; }
+  .proc-step { border-right:none; border-bottom:1px solid var(--border); }
+  footer { flex-direction:column; text-align:center; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .ticker-track,.hero-badge::before { animation:none; }
+  * { transition:none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">SwiftLogic<em>.AI</em><sup>IN</sup></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/919692514547?text=Hi%2C%20I%20want%20a%20free%20audit" class="nav-cta" target="_blank" rel="noopener">Free Audit →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <span class="hero-badge">Pan-India · Remote-first · Zero employees</span>
+    <h1>
+      Automate your business.<br>
+      <span class="hl">Grow without hiring.</span><br>
+      <span class="dim">Across all of India.</span>
+    </h1>
+    <p class="hero-desc">
+      SwiftLogic AI delivers Python automation, data analytics, and AI workflows for D2C brands, EdTech startups, logistics firms, and manufacturers — from Mumbai to Chennai, Delhi to Bengaluru. No IT department needed.
+    </p>
+    <div class="hero-actions">
+      <a href="https://wa.me/919692514547?text=Hi%2C%20I%27d%20like%20a%20free%2030-minute%20audit" class="btn-gold" target="_blank" rel="noopener">
+        Book Free Audit on WhatsApp
+      </a>
+      <a href="#projects" class="btn-outline">See Our Work ↓</a>
+    </div>
+
+    <!-- Live outcomes ticker -->
+    <div class="ticker-wrap">
+      <div class="ticker-head">
+        <div class="ticker-dot td-r"></div>
+        <div class="ticker-dot td-y"></div>
+        <div class="ticker-dot td-g"></div>
+        <span class="ticker-label">live_outcomes.log — automations running across India</span>
+      </div>
+      <div style="overflow:hidden; padding:0;">
+        <div class="ticker-track">
+          <div class="ticker-item"><span class="ticker-city">Mumbai ·</span><span class="ticker-event"> D2C brand — Razorpay reconciliation</span><span class="ticker-val">→ 6 hrs/day saved</span></div>
+          <div class="ticker-item"><span class="ticker-city">Bengaluru ·</span><span class="ticker-event"> EdTech — AI student follow-up bot</span><span class="ticker-val">→ 40% drop-off reduced</span></div>
+          <div class="ticker-item"><span class="ticker-city">Delhi ·</span><span class="ticker-event"> Logistics firm — route dashboard</span><span class="ticker-val">→ ₹2.1L/month saved</span></div>
+          <div class="ticker-item"><span class="ticker-city">Pune ·</span><span class="ticker-event"> Manufacturer — AI document processor</span><span class="ticker-val">→ 200 challans/day automated</span></div>
+          <div class="ticker-item"><span class="ticker-city">Chennai ·</span><span class="ticker-event"> Clinic chain — WhatsApp reminder bot</span><span class="ticker-val">→ no-shows cut by 38%</span></div>
+          <div class="ticker-item"><span class="ticker-city">Hyderabad ·</span><span class="ticker-event"> SaaS startup — lead follow-up system</span><span class="ticker-val">→ 60s response time</span></div>
+          <div class="ticker-item"><span class="ticker-city">Jaipur ·</span><span class="ticker-event"> Retail chain — Power BI dashboard</span><span class="ticker-val">→ 5 branches, 1 view</span></div>
+          <div class="ticker-item"><span class="ticker-city">Ahmedabad ·</span><span class="ticker-event"> FMCG distributor — GST compiler</span><span class="ticker-val">→ 8 hrs → 30 min</span></div>
+          <!-- duplicate for seamless loop -->
+          <div class="ticker-item"><span class="ticker-city">Mumbai ·</span><span class="ticker-event"> D2C brand — Razorpay reconciliation</span><span class="ticker-val">→ 6 hrs/day saved</span></div>
+          <div class="ticker-item"><span class="ticker-city">Bengaluru ·</span><span class="ticker-event"> EdTech — AI student follow-up bot</span><span class="ticker-val">→ 40% drop-off reduced</span></div>
+          <div class="ticker-item"><span class="ticker-city">Delhi ·</span><span class="ticker-event"> Logistics firm — route dashboard</span><span class="ticker-val">→ ₹2.1L/month saved</span></div>
+          <div class="ticker-item"><span class="ticker-city">Pune ·</span><span class="ticker-event"> Manufacturer — AI document processor</span><span class="ticker-val">→ 200 challans/day automated</span></div>
+          <div class="ticker-item"><span class="ticker-city">Chennai ·</span><span class="ticker-event"> Clinic chain — WhatsApp reminder bot</span><span class="ticker-val">→ no-shows cut by 38%</span></div>
+          <div class="ticker-item"><span class="ticker-city">Hyderabad ·</span><span class="ticker-event"> SaaS startup — lead follow-up system</span><span class="ticker-val">→ 60s response time</span></div>
+          <div class="ticker-item"><span class="ticker-city">Jaipur ·</span><span class="ticker-event"> Retail chain — Power BI dashboard</span><span class="ticker-val">→ 5 branches, 1 view</span></div>
+          <div class="ticker-item"><span class="ticker-city">Ahmedabad ·</span><span class="ticker-event"> FMCG distributor — GST compiler</span><span class="ticker-val">→ 8 hrs → 30 min</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="inner">
+    <span class="eyebrow">What we build</span>
+    <h2>Three service lines.<br>One specialist. Full delivery.</h2>
+    <p class="section-sub">No junior handoffs. No account managers. The same expert who scopes your project builds, tests, and delivers it.</p>
+    <div class="svc-wrap">
+      <div class="svc s1">
+        <span class="svc-no">01 / 03</span>
+        <div class="svc-ico g">🐍</div>
+        <p class="svc-title">Python Automation</p>
+        <p class="svc-desc">Custom scripts that eliminate your team's most repetitive daily work — invoice generation, stock alerts, supplier emails, GST report compilation, data pipelines, and scheduled reporting bots.</p>
+        <div class="tags">
+          <span class="tag g">Invoicing</span>
+          <span class="tag g">GST reports</span>
+          <span class="tag g">Stock alerts</span>
+          <span class="tag g">Email bots</span>
+          <span class="tag g">Web scraping</span>
+          <span class="tag g">Data pipelines</span>
+        </div>
+      </div>
+      <div class="svc s2">
+        <span class="svc-no">02 / 03</span>
+        <div class="svc-ico t">📊</div>
+        <p class="svc-title">Data Analytics</p>
+        <p class="svc-desc">Live dashboards, monthly insight reports, customer segmentation, sales forecasting, and profitability analysis. Your existing data — made visible, useful, and actionable within days.</p>
+        <div class="tags">
+          <span class="tag t">Power BI</span>
+          <span class="tag t">Looker Studio</span>
+          <span class="tag t">Forecasting</span>
+          <span class="tag t">Segmentation</span>
+          <span class="tag t">KPI dashboards</span>
+        </div>
+      </div>
+      <div class="svc s3">
+        <span class="svc-no">03 / 03</span>
+        <div class="svc-ico r">🤖</div>
+        <p class="svc-title">AI Automation</p>
+        <p class="svc-desc">WhatsApp AI chatbots, 60-second lead follow-up systems, AI document processors, social media automation, and end-to-end sales pipeline automation. Your business, running 24/7.</p>
+        <div class="tags">
+          <span class="tag r">WhatsApp bot</span>
+          <span class="tag r">Lead nurture</span>
+          <span class="tag r">AI chatbot</span>
+          <span class="tag r">n8n flows</span>
+          <span class="tag r">LangChain</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries">
+  <div class="inner">
+    <span class="eyebrow">Industries we serve</span>
+    <h2>Built for India's<br>fastest-growing sectors.</h2>
+    <p class="section-sub">Every solution is calibrated to your industry's specific workflows, platforms, and pain points.</p>
+    <div class="ind-grid">
+      <div class="ind-card">
+        <span class="ind-ico">🛍️</span>
+        <p class="ind-name">D2C &amp; E-commerce</p>
+        <p class="ind-desc">Razorpay reconciliation, Shiprocket automation, return processing, WhatsApp follow-ups, customer RFM segmentation.</p>
+        <p class="ind-price">Projects from ₹40,000</p>
+      </div>
+      <div class="ind-card">
+        <span class="ind-ico">🎓</span>
+        <p class="ind-name">EdTech &amp; Coaching</p>
+        <p class="ind-desc">AI student follow-up bots, batch performance dashboards, fee reminder automation, enrolment analytics.</p>
+        <p class="ind-price">Projects from ₹35,000</p>
+      </div>
+      <div class="ind-card">
+        <span class="ind-ico">🚚</span>
+        <p class="ind-name">Logistics &amp; Supply Chain</p>
+        <p class="ind-desc">Route optimisation dashboards, delivery tracking automation, vendor reconciliation, demand forecasting.</p>
+        <p class="ind-price">Projects from ₹60,000</p>
+      </div>
+      <div class="ind-card">
+        <span class="ind-ico">🏭</span>
+        <p class="ind-name">Manufacturing &amp; MIDC</p>
+        <p class="ind-desc">AI document processors for challans and invoices, OEE dashboards, production reporting bots.</p>
+        <p class="ind-price">Projects from ₹50,000</p>
+      </div>
+      <div class="ind-card">
+        <span class="ind-ico">🏥</span>
+        <p class="ind-name">Healthcare &amp; Clinics</p>
+        <p class="ind-desc">Appointment reminder bots, patient data organisation, medicine expiry trackers, multi-branch analytics.</p>
+        <p class="ind-price">Projects from ₹25,000</p>
+      </div>
+      <div class="ind-card">
+        <span class="ind-ico">💼</span>
+        <p class="ind-name">Startups &amp; SaaS</p>
+        <p class="ind-desc">Lead qualification AI, sales pipeline automation, churn prediction models, investor-ready MIS reports.</p>
+        <p class="ind-price">Projects from ₹50,000</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="inner">
+    <span class="eyebrow">Project catalogue</span>
+    <h2>Real solutions.<br>Real prices. Delivered remotely.</h2>
+    <p class="section-sub">Every project below is production-ready and deliverable to any city in India within 1–3 weeks.</p>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <span class="proj-biz pb-d2c">D2C / E-commerce</span>
+        <p class="proj-name">Razorpay reconciliation bot</p>
+        <p class="proj-desc">Auto-reconciles payments vs orders daily. Flags mismatches, generates settlement summary, emails it to your finance team every morning.</p>
+        <p class="proj-price">₹35,000 – ₹60,000</p>
+      </div>
+      <div class="proj-card">
+        <span class="proj-biz pb-edtech">EdTech / Coaching</span>
+        <p class="proj-name">AI student follow-up system</p>
+        <p class="proj-desc">Identifies at-risk students from engagement data, auto-sends personalised WhatsApp nudges. Reduces drop-off without any manual outreach.</p>
+        <p class="proj-price">₹40,000 – ₹80,000 + ₹6k/mo</p>
+      </div>
+      <div class="proj-card">
+        <span class="proj-biz pb-logi">Logistics</span>
+        <p class="proj-name">Live ops dashboard</p>
+        <p class="proj-desc">Real-time delivery status, route efficiency, driver performance, and cost-per-delivery — all in one Power BI dashboard.</p>
+        <p class="proj-price">₹50,000 – ₹1,20,000 + ₹5k/mo</p>
+      </div>
+      <div class="proj-card">
+        <span class="proj-biz pb-mfg">Manufacturing</span>
+        <p class="proj-name">AI document processor</p>
+        <p class="proj-desc">Reads scanned challans and purchase orders via AI OCR, extracts key fields, auto-enters into Excel or Tally. Handles 100–500 docs/day.</p>
+        <p class="proj-price">₹60,000 – ₹1,50,000 + ₹6k/mo</p>
+      </div>
+      <div class="proj-card">
+        <span class="proj-biz pb-any">Any business</span>
+        <p class="proj-name">WhatsApp AI chatbot</p>
+        <p class="proj-desc">Trained on your product catalogue, FAQs, and policies. Handles 80% of inbound queries, takes orders, books demos — 24/7 without staff.</p>
+        <p class="proj-price">₹50,000 – ₹1,20,000 + ₹5k/mo</p>
+      </div>
+      <div class="proj-card">
+        <span class="proj-biz pb-d2c">D2C / Retail</span>
+        <p class="proj-name">Customer RFM segmentation</p>
+        <p class="proj-desc">Segments your customer base by recency, frequency, and monetary value. Identifies your top 20%, lapsed buyers, and at-risk customers.</p>
+        <p class="proj-price">₹30,000 – ₹55,000</p>
+      </div>
+      <div class="proj-card">
+        <span class="proj-biz pb-any">Any business</span>
+        <p class="proj-name">AI lead follow-up system</p>
+        <p class="proj-desc">Lead comes in → personalised WhatsApp message goes out in 60 seconds automatically. Nurture sequence runs for 7 days.</p>
+        <p class="proj-price">₹50,000 – ₹1,20,000 + ₹6k/mo</p>
+      </div>
+      <div class="proj-card">
+        <span class="proj-biz pb-logi">Supply chain</span>
+        <p class="proj-name">Demand forecasting model</p>
+        <p class="proj-desc">AI analyses 12 months of sales history, predicts next month's demand per SKU, auto-generates purchase orders.</p>
+        <p class="proj-price">₹60,000 – ₹1,50,000 + ₹8k/mo</p>
+      </div>
+      <div class="proj-card">
+        <span class="proj-biz pb-any">Any business</span>
+        <p class="proj-name">GST report compiler</p>
+        <p class="proj-desc">Reads Tally or Excel transactions, auto-formats GSTR-1 and GSTR-3B ready reports. Cuts filing prep from 8 hours to 30 minutes.</p>
+        <p class="proj-price">₹25,000 – ₹55,000</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE DEMO -->
+<section id="demo">
+  <div class="inner">
+    <span class="eyebrow">Watch me do this</span>
+    <h2>One working demo.<br>Better than ten case studies.</h2>
+    <p class="section-sub">This is a live Business Intelligence dashboard built with Python for a fictional Indian D2C brand. Same stack I use for real clients.</p>
+
+    <div class="demo-card">
+      <div>
+        <span class="demo-badge">● Live · Dummy data</span>
+        <p class="demo-title">Prakriti Naturals — Business Intelligence Dashboard</p>
+        <p class="demo-desc">
+          A complete sales, customer & inventory dashboard for a Pune-based D2C brand. 
+          Shows revenue trends, RFM customer segments, channel performance, top products, 
+          and inventory health alerts — all generated from realistic dummy data.
+        </p>
+        <ul class="demo-features">
+          <li>Revenue, orders, AOV & customer KPIs</li>
+          <li>12-month revenue trend + category breakdown</li>
+          <li>RFM segmentation (Champions → Lost) with recommended actions</li>
+          <li>Channel & city performance</li>
+          <li>Inventory health with low-stock flags</li>
+          <li>Built with Streamlit + Pandas + Plotly</li>
+        </ul>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:4px;">
+          <a href="portfolio_demo.py" download="portfolio_demo.py" class="btn-gold">
+            ↓ Download Python File
+          </a>
+          <a href="https://wa.me/919692514547?text=Hi%2C%20I%20want%20to%20see%20the%20live%20dashboard%20demo" class="btn-outline" target="_blank" rel="noopener">
+            Request live walkthrough
+          </a>
+        </div>
+      </div>
+      <div class="demo-side">
+        <div class="label">Demo business</div>
+        <div class="brand">🌿 Prakriti Naturals</div>
+        <div class="meta">Fictional D2C · Health & Personal Care · Pune</div>
+        <div class="demo-kpis">
+          <div class="demo-kpi">
+            <div class="num">₹48.2L</div>
+            <div class="lbl">Annual Revenue</div>
+          </div>
+          <div class="demo-kpi">
+            <div class="num">2,140</div>
+            <div class="lbl">Orders</div>
+          </div>
+          <div class="demo-kpi">
+            <div class="num">5</div>
+            <div class="lbl">RFM Segments</div>
+          </div>
+          <div class="demo-kpi">
+            <div class="num">3</div>
+            <div class="lbl">Low Stock SKUs</div>
+          </div>
+        </div>
+        <p class="demo-note">
+          <strong>How to run:</strong><br>
+          1. Download the file<br>
+          2. <code style="font-family:var(--mono);font-size:.72rem;background:#fff;padding:2px 6px;border-radius:4px;border:1px solid var(--border)">pip install streamlit pandas plotly numpy</code><br>
+          3. <code style="font-family:var(--mono);font-size:.72rem;background:#fff;padding:2px 6px;border-radius:4px;border:1px solid var(--border)">streamlit run portfolio_demo.py</code>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="inner">
+    <span class="eyebrow">Monthly retainer plans</span>
+    <h2>Recurring value.<br>Predictable cost.</h2>
+    <p class="section-sub">Start with a project, convert to a retainer when you're ready. No long contracts. Cancel any time.</p>
+    <div class="plans">
+      <div class="plan">
+        <p class="plan-name">Maintenance</p>
+        <p class="plan-price">₹3,000<span>/month</span></p>
+        <p class="plan-sub">Keep your automation running smoothly</p>
+        <ul class="plan-list">
+          <li>Monthly uptime monitoring</li>
+          <li>Bug fixes within 48 hours</li>
+          <li>1 script update per month</li>
+          <li>WhatsApp support channel</li>
+        </ul>
+        <a href="https://wa.me/919692514547?text=Interested%20in%20Maintenance%20plan" class="plan-btn ghost" target="_blank">Get Started →</a>
+      </div>
+      <div class="plan featured">
+        <span class="plan-badge">Most popular</span>
+        <p class="plan-name">Insights</p>
+        <p class="plan-price">₹12,000<span>/month</span></p>
+        <p class="plan-sub">Monthly clarity on your business data</p>
+        <ul class="plan-list">
+          <li>Dashboard refresh every month</li>
+          <li>1 custom insight report</li>
+          <li>30-min monthly review call</li>
+          <li>Bug fixes within 24 hours</li>
+          <li>1 automation update/month</li>
+          <li>Priority WhatsApp support</li>
+        </ul>
+        <a href="https://wa.me/919692514547?text=Interested%20in%20Insights%20retainer" class="plan-btn gold" target="_blank">Start with Insights →</a>
+      </div>
+      <div class="plan">
+        <p class="plan-name">Full Partner</p>
+        <p class="plan-price">₹35,000<span>/month</span></p>
+        <p class="plan-sub">Your embedded tech team, fully remote</p>
+        <ul class="plan-list">
+          <li>Everything in Insights</li>
+          <li>1 new automation per month</li>
+          <li>Unlimited small requests</li>
+          <li>Quarterly strategy session</li>
+          <li>Priority same-day response</li>
+          <li>Annual tech roadmap planning</li>
+        </ul>
+        <a href="https://wa.me/919692514547?text=Interested%20in%20Full%20Partner%20plan" class="plan-btn ghost" target="_blank">Get Started →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="inner">
+    <span class="eyebrow">How it works</span>
+    <h2>From first call to live system<br>in 4 weeks. Anywhere in India.</h2>
+    <div class="process-grid">
+      <div class="proc-step">
+        <span class="proc-wk">Week 01</span>
+        <p class="proc-title">Free audit</p>
+        <p class="proc-desc">30-minute Zoom or WhatsApp call. We map your current manual processes, identify the top 3 automation opportunities, and show you the rupee value of each — no charge.</p>
+      </div>
+      <div class="proc-step">
+        <span class="proc-wk">Week 02</span>
+        <p class="proc-title">Build</p>
+        <p class="proc-desc">We build using your actual data. Daily progress updates on WhatsApp. You see exactly what's happening at every step — no black box, no surprises.</p>
+      </div>
+      <div class="proc-step">
+        <span class="proc-wk">Week 03</span>
+        <p class="proc-title">Test &amp; refine</p>
+        <p class="proc-desc">You test against real scenarios via screen share. We refine until fully satisfied. Two revision rounds included in every project, no questions asked.</p>
+      </div>
+      <div class="proc-step">
+        <span class="proc-wk">Week 04</span>
+        <p class="proc-title">Handover</p>
+        <p class="proc-desc">Online training session for your team (30–60 min). Full documentation handed over. 30-day post-launch support included. Most clients move to a retainer here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACQUIRE -->
+<section id="acquire">
+  <div class="inner">
+    <span class="eyebrow">Why remote works</span>
+    <h2>Serving clients from<br>Kashmir to Kanyakumari.</h2>
+    <p class="section-sub">Every engagement is fully remote — Zoom calls, WhatsApp updates, shared screens, and cloud-based delivery. Geography is not a constraint.</p>
+    <div class="acq-grid">
+      <div class="acq-card">
+        <div class="acq-no">01</div>
+        <p class="acq-title">Zoom-first discovery</p>
+        <p class="acq-desc">All audits, scoping, and demos happen on Zoom or Google Meet. A Mumbai founder and a Jaipur retailer get the same quality conversation.</p>
+      </div>
+      <div class="acq-card">
+        <div class="acq-no">02</div>
+        <p class="acq-title">WhatsApp project updates</p>
+        <p class="acq-desc">Daily progress on WhatsApp. You see builds in progress via screen recordings. No lengthy email threads — just fast, clear communication.</p>
+      </div>
+      <div class="acq-card">
+        <div class="acq-no">03</div>
+        <p class="acq-title">Cloud delivery</p>
+        <p class="acq-desc">Dashboards on Google Looker Studio or Power BI, scripts on GitHub, automations on Railway or Cloudflare. Everything accessible from your phone or laptop.</p>
+      </div>
+      <div class="acq-card">
+        <div class="acq-no">04</div>
+        <p class="acq-title">Razorpay payments</p>
+        <p class="acq-desc">Pay via UPI, NEFT, or card through Razorpay. Clean invoices with GST. 50% advance, 50% on delivery — standard, transparent terms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="inner">
+    <span class="eyebrow">Tech stack</span>
+    <h2>Enterprise tools.<br>SMB pricing.</h2>
+    <p class="section-sub">The same stack that powers India's top tech teams — without the ₹50L/year payroll.</p>
+    <div class="tools-strip">
+      <span class="tool hl">Python</span>
+      <span class="tool hl">LangChain</span>
+      <span class="tool hl">n8n</span>
+      <span class="tool hl">FastAPI</span>
+      <span class="tool hl">OpenAI API</span>
+      <span class="tool">Power BI</span>
+      <span class="tool">Google Looker Studio</span>
+      <span class="tool">pandas</span>
+      <span class="tool">Prophet</span>
+      <span class="tool">sklearn</span>
+      <span class="tool">Twilio / WATI</span>
+      <span class="tool">Make.com</span>
+      <span class="tool">Razorpay API</span>
+      <span class="tool">Supabase</span>
+      <span class="tool">Streamlit</span>
+      <span class="tool">BeautifulSoup</span>
+      <span class="tool">Google Sheets API</span>
+      <span class="tool">Cloudflare Pages</span>
+      <span class="tool">Railway</span>
+      <span class="tool">GitHub Actions</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="inner">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <span class="eyebrow">Get in touch</span>
+        <h2>Start with a<br>free 30-min audit.</h2>
+        <p>We map your current manual processes, identify the highest-impact automations, and tell you exactly what each saves or earns you — at no charge, no obligation.</p>
+        <ul class="cinfo">
+          <li>
+            <span class="clabel">WhatsApp</span>
+            <span class="cval"><a href="https://wa.me/919692514547">+91 96925 14547</a></span>
+          </li>
+          <li>
+            <span class="clabel">Email</span>
+            <span class="cval"><a href="mailto:swiftlogicai.pm@gmail.com">swiftlogicai.pm@gmail.com</a></span>
+          </li>
+          <li>
+            <span class="clabel">Based in</span>
+            <span class="cval">Serving all of India remotely · Pune, Maharashtra</span>
+          </li>
+          <li>
+            <span class="clabel">Response</span>
+            <span class="cval">Within 4 hours on WhatsApp · Same business day on email</span>
+          </li>
+          <li>
+            <span class="clabel">Serving</span>
+            <span class="cval">Mumbai · Delhi · Bengaluru · Hyderabad · Chennai · Ahmedabad · Jaipur · Surat · Kolkata · Pune + all Tier 2 cities</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <form class="cform" onsubmit="handleForm(event)">
+          <div class="crow">
+            <input type="text" placeholder="Your name" required>
+            <input type="text" placeholder="Company / business name">
+          </div>
+          <div class="crow">
+            <input type="tel" placeholder="WhatsApp number" required>
+            <input type="email" placeholder="Work email">
+          </div>
+          <select required>
+            <option value="" disabled selected>Which service do you need?</option>
+            <option>Python Automation</option>
+            <option>Data Analytics / Dashboard</option>
+            <option>AI Chatbot / Automation</option>
+            <option>Monthly Retainer</option>
+            <option>Full sales pipeline automation</option>
+            <option>Not sure — need a recommendation</option>
+          </select>
+          <select>
+            <option value="" disabled selected>Your industry</option>
+            <option>D2C / E-commerce</option>
+            <option>EdTech / Coaching</option>
+            <option>Logistics / Supply chain</option>
+            <option>Manufacturing</option>
+            <option>Healthcare / Clinic</option>
+            <option>SaaS / Startup</option>
+            <option>Other</option>
+          </select>
+          <textarea rows="3" placeholder="Briefly describe what you want to automate or improve..."></textarea>
+          <button type="submit" class="csubmit">Send via WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">SwiftLogic.AI</span>
+  <span class="footer-copy">© 2026 SwiftLogic AI · Pune, Maharashtra · Pan-India remote delivery</span>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+const secs = document.querySelectorAll('section[id]');
+const navAs = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 90) cur = s.id; });
+  navAs.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--gold)' : '';
+  });
+}, { passive: true });
+
+function handleForm(e) {
+  e.preventDefault();
+  const f = e.target;
+  const name    = f.querySelector('input[placeholder="Your name"]').value;
+  const company = f.querySelector('input[placeholder="Company / business name"]').value;
+  const phone   = f.querySelector('input[placeholder="WhatsApp number"]').value;
+  const svc     = f.querySelectorAll('select')[0].value;
+  const ind     = f.querySelectorAll('select')[1].value;
+  const msg     = f.querySelector('textarea').value;
+  const text = encodeURIComponent(
+    `Hi SwiftLogic AI!\n\nName: ${name}\nCompany: ${company}\nPhone: ${phone}\nService: ${svc}\nIndustry: ${ind}\n\n${msg}`
+  );
+  window.open(`https://wa.me/919692514547?text=${text}`, '_blank');
+}
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.svc,.ind-card,.proj-card,.plan,.proc-step,.acq-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(18px)';
+  el.style.transition = 'opacity .45s ease, transform .45s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
